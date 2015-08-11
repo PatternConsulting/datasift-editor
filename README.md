@@ -104,10 +104,10 @@ Contributing
 
 The editor uses [Bundy](https://github.com/michaldudek/Bundy) to build minified version. Install it using NPM:
 
-    $ npm install bundy
+    $ npm install
 
-And then run `bundy.js`:
+And then run the build script also using NPM:
 
-    $ node bundy.js
+    $ npm run build
 
 This will minify all JavaScript and CSS files and copy image files and place them inside `minified/` directory.
