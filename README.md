@@ -111,3 +111,7 @@ And then run the build script also using NPM:
     $ npm run build
 
 This will minify all JavaScript and CSS files and copy image files and place them inside `minified/` directory.
+
+Optionally, you can specify a target directory if deploying to an existing application:
+
+    $ npm run build -- --out '/path/to/my-project/js/datasift-editor'
