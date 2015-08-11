@@ -1,4 +1,14 @@
-var bundy = require('bundy');
+var bundy = require('bundy')
+  , path = require('path')
+  , program = require('commander');
+
+program
+  .option('-o, --out [value]', 'Directory to store minified files.')
+  .parse(process.argv);
+
+var directories = {
+  minified: program.out || 'minified'
+};
 
 bundy.js([
     'src/jcsdl.loader.js',
@@ -22,13 +32,13 @@ bundy.js([
     'src/jcsdl.loader.post.js'
 ], 'minified/jcsdl.min.js');
 
-bundy.copy('src/jcsdl.definition.js', 'minified/jcsdl.definition.js');
+bundy.copy('src/jcsdl.definition.js', path.join(directories.minified, 'jcsdl.definition.js'));
 
 bundy.css([
     'src/lib/jquery.ui.custom.min.css',
     'src/lib/jquery.tipsy.css',
     'src/jcsdl.css'
-], 'minified/jcsdl.min.css');
+], path.join(directories.minified, 'jcsdl.min.css'));
 
 bundy.copy([
     'src/img/elements.png',
@@ -66,8 +76,8 @@ bundy.copy([
     'src/img/select.png',
     'src/img/select@2x.png',
     'src/img/step_background.png'
-], 'minified/img/');
+], path.join(directories.minified, 'img' + path.sep));
 
-bundy.copy('src/swf/ZeroClipboard.swf', 'minified/swf/ZeroClipboard.swf');
+bundy.copy('src/swf/ZeroClipboard.swf', path.join(directories.minified, 'swf', 'ZeroClipboard.swf'));
 
 bundy.build();
